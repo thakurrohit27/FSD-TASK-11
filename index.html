@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FSD TASK COUNTDOWN APPLICATION</title>
+</head>
+<style>
+    div {
+        text-align: center;
+        font-size: 50px;
+        border: 3px solid grey;
+        margin: 200px;
+        background-color: royalblue;
+
+    }
+  
+    body {
+        background-image: url("2.png");
+
+    }
+</style>
+
+<body>
+    <div>
+        <h1>Sankranti Countdown</h1>
+        <h2 id="time"></h2>
+    </div>
+</body>
+<script>
+
+    let CountDate = new Date("Jan 14, 2024 10:00:00").getTime();
+    let x = setInterval(function () {
+        let present = new Date().getTime();
+        let time = CountDate - present;
+        let d = Math.floor(time / (1000 * 24 * 60 * 60));
+        let h = Math.floor((time % (1000 * 24 * 60 * 60)) / (1000 * 60 * 60));
+        let m = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
+        let s = Math.floor((time % (1000 * 60)) / 1000);
+
+        if (time < 0) {
+            clearInterval(x);
+            document.getElementById("time").innerHTML = "This Countdown has been done";
+        }
+
+        document.getElementById("time").innerHTML = d + "days: " + h + "hours: "
+            + m + "minutes: " + s + "seconds";
+    }, 1000);
+</script>
+
+</html>
